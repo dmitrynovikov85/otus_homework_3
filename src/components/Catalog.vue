@@ -36,6 +36,11 @@ const addProduct = (product) => {
 <template>
   <div style="display: flex;align-items: center;justify-content: space-between;    font-size: 30px;margin: 0 20px;    cursor: pointer;">
     <Search @search="search"/>
+    <router-link :to="{ path: `/checkout` }" >
+      <div style="text-decoration: underline;">
+        Checkout
+      </div>
+    </router-link>
     <router-link :to="{ path: `/cart` }" >
       <div style="text-decoration: underline;">
         Cart
