@@ -3,6 +3,7 @@ import Catalog from '../components/Catalog.vue';
 import Product from '../components/Product.vue';
 import Cart from '../components/Cart.vue';
 import Checkout from '../components/Checkout.vue';
+import AddNewProduct from '../components/AddNewProduct.vue';
 
 const routes = [
     {
@@ -27,6 +28,12 @@ const routes = [
         component: Checkout,
         name: 'Checkout',
         props: true
+    },
+    {
+        path: "/add_new_product",
+        component: AddNewProduct,
+        name: "AddNewProduct",
+        props: true,
     },
 ];
 const router = createRouter({

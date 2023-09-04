@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import ProductItem from './ProductItem.vue';
 import getProductList from '../services/index.js';
 import Search from './Search.vue';
+import AddNewProduct from './AddNewProduct.vue';
 
 const productInCartList = ref([]);
 const productList = ref([]);
@@ -14,19 +15,12 @@ onMounted(async () => {
 });
 
 const search = (filterPrice, filterProduct) => {
-  if (filterPrice && filterProduct) {
-    filteredProductList.value = filteredProductList.value.filter(product => product.title.toLowerCase().includes(filterProduct) && +product.price === +filterPrice)
-    return
-  }
   if (filterPrice) {
     filteredProductList.value= filteredProductList.value.filter(product => +product.price === +filterPrice);
-    return;
   }
   if (filterProduct) {
     filteredProductList.value = filteredProductList.value.filter(product => product.title.toLowerCase().includes(filterProduct))
-    return;
   }
-  filteredProductList.value = productList.value;
 }
 const addProduct = (product) => {
   productInCartList.value.push(product);
@@ -36,14 +30,14 @@ const addProduct = (product) => {
 <template>
   <div style="display: flex;align-items: center;justify-content: space-between;    font-size: 30px;margin: 0 20px;    cursor: pointer;">
     <Search @search="search"/>
+    <router-link :to="{ path: `/add_new_product` }" >
+      <div style="text-decoration: underline;">
+        Add New Product
+      </div>
+    </router-link>
     <router-link :to="{ path: `/checkout` }" >
       <div style="text-decoration: underline;">
         Checkout
-      </div>
-    </router-link>
-    <router-link :to="{ path: `/cart` }" >
-      <div style="text-decoration: underline;">
-        Cart
       </div>
     </router-link>
   </div>
